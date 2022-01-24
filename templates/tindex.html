@@ -1,0 +1,51 @@
+{% extends 'tbase.html' %}
+{% block body %}
+<div class="container">
+    <div class="login">
+
+    
+    
+    {% comment %}
+        <center>
+        
+        <h1>
+            Add a Exam
+        </h1>
+     </center>
+    <form method='GET' action="/tindex/">
+    {% csrf_token %}
+
+        <div class="addqninput">
+
+            <input type="text" name="subname" id="sid" required placeholder="Subject Name" autocomplete="off">
+            <span id="qn" class="namespan"> </span>
+        </div>
+        <div class="addqninput">
+    
+            <input type="text" name="eqty" class="form-control" required id="name" placeholder="Number of Question"
+                autocomplete="off">
+            <span id="qn" class="namespan"> </span>
+        </div>
+
+        <div class="">
+            <input class="btn" type="submit" value="Add">
+        </div>
+
+    </form> {% endcomment %}
+
+    <div >
+        <button style="padding: 56px;margin: 14px;" class="btn" onclick="location.href='/addqn/'">
+            Add Question
+        </button>
+
+        <button style="padding: 56px;margin: 14px;" class="btn" onclick="location.href='/viewqn/'">
+            View Questions
+        </button>
+  
+        
+      </div>
+</div>
+</div>
+ 
+  
+    {% endblock body %}

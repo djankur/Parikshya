@@ -1,0 +1,37 @@
+{% extends 'tbase.html' %}
+{% block body %}
+ <div class="tcontainer">
+     <div class="addqn">
+        <h1>DELETE QUESTION HERE</h1>
+     
+    {% for i in qn  %}
+   
+    <form method="post" action="/delete/">
+        {% csrf_token %} 
+        <div class="addqninput" style="inline-size: auto;" >
+
+            {{i.qid}}.
+            <input  type="text" name="qid" value="{{i.qid}}" hidden > 
+            <input  type="text" name="qn" value="{{i.question}}" style="font-size:larger"> 
+            <input type="submit" class='btn' onclick="myfun()" style="inline-size: 58px;" value="DEL">
+            
+            <br><br>
+          
+            
+        </div>
+       
+    </form>
+    
+
+    {% endfor %}
+</div>
+ </div>
+
+ <script>
+     function myfun(){
+         confirm("Are you sure?")
+     }
+     
+ </script>
+{% endblock body %}
+    

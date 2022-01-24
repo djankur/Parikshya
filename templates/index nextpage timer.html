@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Exam</title>
+    <link rel="stylesheet" href="/static/exam.css" />
+    {% load static%}
+    <script type="text/javascript" src="{% static 'scr.js' %}"></script>
+    <!-- <script src="/static/script.js"></script> -->
+
+{% comment %} <style>
+ .alert
+{
+max-width:500px;
+margin:0 auto;
+margin-top:50px;
+}
+
+.san-button
+{
+    background-color: #009688 !important;
+    color: #fff !important;
+    width: 161px;
+    margin: 0 auto;
+    display: block !important;
+}
+</style> {% endcomment %}
+
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <h1 style="font-family: cursive;">Pariksha</h1>
+        </div>
+
+        {% comment %} <h2>Time - 15:21</h2> {% endcomment %}
+        <div align="right " id="displaytimer"><b>Timer: 0 seconds</b></div>
+    </nav>
+    
+    {% comment %} <div class="alert alert-success" id="success-alert">
+        <button type="button" class="close" data-dismiss="alert">x</button>
+        <strong>Success! </strong> Product have added to your wishlist.
+      </div> {% endcomment %}
+
+    <div class="container">
+
+        <div class="card">
+
+            {% for i in questions %}
+            <div class="question">
+                <h1>
+                    {{i.qid}}) {{i.question}} ?
+                </h1>
+            </div>
+            <form action="/qn?name=">
+                <div class="answer">
+                    <div class="row">
+                        <div class="option">
+                            <input type="radio" id="myRadio1" class="rb" name="name" id="Option1" value="{{i.option1}}"> A)
+                            {{i.option1}}</p>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="myRadio2" class="rb" name="name" id="Option2" value="{{i.option2}}"> B)
+                            {{i.option2}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="option">
+                            <input type="radio" id="myRadio3" class="rb" name="name" id="Option3" value="{{i.option3}}"> C)
+                            {{i.option3}}
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="myRadio4" class="rb" name="name" id="Option4" value="{{i.option4}}"> D)
+                            {{i.option4}}
+                        </div>
+                    </div>
+                </div>
+                
+                <input id='timer' type='hidden' name="timer" value="">
+                 <br>
+        </form>
+
+{% endfor %}
+<!-- <div class="row">
+    <button id="save_ans" >
+        SUBMIT ANS
+    </button>
+</div> -->
+
+ <div class="row">
+     
+                {% if questions.has_previous%}
+                <a href="?page={{questions.previous_page_number}}">
+                    <button id="submitans">
+                        Previous
+                    </button> </a>
+                {%endif%}
+
+
+                {% if questions.has_next %}
+                <a href="?page={{questions.next_page_number}}">
+                    <!-- <button id="submitans"> -->
+                        <button id="save_ans" >  
+                        Next
+                    </button> </a>
+                {%else%}
+                <a href="/result/">
+                    <button id="submitans">
+                        Submit Answer
+                    </button> </a>
+                {%endif%}
+            </div>
+            
+
+        </div>
+        
+    </div>
+   
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+
+{% block script %}
+        <script>
+ 
+            console.log('hello world')
+            const timer=document.getElementById('displaytimer')
+            console.log(timer.textContent)
+            const inputtag = document.getElementById('timer')
+ 
+            t=3
+            setInterval(()=>{
+                t-=1
+                timer.innerHTML ="<b>Timer: " +t+" seconds</b>"
+                inputtag.value = t;
+
+                
+                if(t==0)
+                {
+                  {% comment %} location.replace("?page={{questions.next_page_number}}") {% endcomment %}
+                  location.replace("{{questions.next_page_number}}")
+                
+                }
+                
+                
+            },1000
+            )
+
+            
+        </script>
+    {% endblock script %}
+</body>
+
+
+<!-- <script src="http://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+</html>

@@ -1,0 +1,240 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    height: 100vh;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 6rem;
+}
+ul{
+    display: flex;
+    list-style: none;
+}
+ul li{
+    font-size: 16px;
+    font-weight: 600;
+    margin-left: 3rem;
+    cursor: pointer;
+    position: relative;
+}
+
+/* logo */
+.logo{
+    font-size: 25px;
+    
+}
+
+/* dropdown */
+.dropdown{
+    display: none;
+    flex-direction: column;
+    padding: 20px;
+    position: absolute;
+    top: 1rem;
+    right: 0;
+    width: 200px;
+    background-color: whitesmoke;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 5px 1px gray;
+}
+.dropdown-btn:hover .dropdown{
+    display: flex;
+}
+.dropdown a{
+    color: black;
+    padding: 0.3rem 0;
+    text-decoration: none;
+}
+.main{
+  
+    display: flex;
+    padding: 5rem;
+    
+}
+.main .text{
+    flex-basis: 60%;
+    padding: 0 3rem;
+}
+.text h1{
+    font-size: 50px;
+}
+.text p{
+    font-size: 25px;
+    margin: 20px 20px 50px 0;
+}
+.btn{
+    border: none;
+    width: 100%;
+    padding: 5px 0;
+    border-radius: 2rem;
+    background-color: rgb(152, 102, 175);
+    color: white;
+    font-weight: 700;
+    font-size: 20px;
+}
+ .btn:hover{
+     background-color: rgb(121, 74, 143);
+}
+.main img{
+    flex-basis: 30%;
+    width: 600px;
+    padding: 0 3rem;
+}
+
+/* footer */
+.footer{
+    width: 100%;
+    height: 200px;
+}
+.line{
+    width: 90%;
+    height: 1px;
+    background-color: gray;
+}
+.footer-text{
+    padding: 50px;
+}
+
+
+
+/* Registration Form */
+.container{
+    position: absolute;
+    display: flex;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 50rem;
+    height: 30rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.397);
+}
+.photo, .login , .addqn{
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    
+}
+.photo{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 0.5rem 0 0 0.5rem;
+}
+.login , .addqn{
+    padding: 45px 40px;
+    overflow: auto;
+
+}
+.input-row{
+    margin: 20px 0px;
+    width: 100%;
+}
+.input-row input:not(.btn){
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+    border-radius: 1.5rem;
+    border: none;
+    background-color: rgb(220, 197, 226);
+}
+.login p{
+    font-size: 13px;
+}
+
+.alert ,.rollspan, .passwordspan, .emailspan , .namespan{
+    color: red;
+}
+
+/* teacher pannel */
+
+.thead{
+    padding-top: 25px;
+    
+    font-size: 30px;
+}
+
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    opacity: 0.7;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .sidenav a {
+    padding:  32px;
+    padding-top: 80px;
+
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+  /* Add question */
+
+  .addqninput{
+    margin: 20px 0px;
+    width: 50%;
+}
+.addqninput input:not(.btn){
+    padding: 7px;
+    margin: 4px 0;
+    width: 100%;
+    border-radius: 1.5rem;
+    border: none;
+    background-color: rgb(223, 223, 223);
+}
+
+.tcontainer{
+    position: absolute;
+    display: flex;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 50rem;
+    height: 40rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.397);
+}
+
+.tedit{
+   float: right;
+}

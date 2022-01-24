@@ -1,0 +1,83 @@
+<html>
+<head>
+    <title>Simple Quiz App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    {% comment %} <script>
+    $(document).ready(function(){
+    $("#b1").click(function(){
+        $(".rb").show();
+        $(".rb").attr("disabled",true);
+
+
+    });
+    });
+
+
+        function getanswers()
+        {
+        document.getElementById("UserAnswers").innerHTML = "";
+        var e = document.getElementsByTagName("input");
+            for(i = 0 ; i<=e.length;i++)
+            {
+                if(e[i].type=="radio")
+                {
+                    if(e[i].checked)
+                    {
+                        document.getElementById("UserAnswers").innerHTML+="Q "+e[i].name + " The Answers You Are Selected Is : "+e[i].value+"<br>";
+
+                    }
+                }
+            }
+        }
+    </script> {% endcomment %}
+
+
+</head>
+<body>
+<div class="container">
+    <h1 class="text-danger mt-3">EXAM</h1>
+    <hr>
+    <div>
+        {% for i in  exam %}
+        <table>
+            
+
+             {% comment %} <tr>
+                <td><input type = "radio" class="rb" name = {{i.id}} id="Option1" value="{{i.qid}}">{{i.id}}</td>
+            </tr>  {% endcomment %}
+
+            <tr>
+                <td class="text-primary">{{i.qid}}) {{i.question}} </td>
+            </tr>
+
+            <tr>
+                <td><input type = "radio" class="rb" name = {{i.id}} id="Option1" value="{{i.option1}}"> A) {{i.option1}}</td>
+            </tr>
+            <tr>
+                <td><input type = "radio" class="rb" name = {{i.id}} id="Option2" value="{{i.option2}}"> B) {{i.option2}}</td>
+            </tr>
+            <tr>
+                <td><input type = "radio" class="rb" name = {{i.id}} id="Option3" value="{{i.option3}}"> C) {{i.option3}}</td>
+            </tr>
+            <tr>
+                <td><input type = "radio" class="rb" name = {{i.id}} id="Option4" value="{{i.option4}}"> D) {{i.option4}}</td>
+            </tr>
+
+
+        </table>
+<hr>
+
+        {% endfor %}
+        <input type="submit" class="btn btn-success" value="Submit" id="b1">
+        <br>
+        
+        </div>
+
+        
+</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/static/style.css">
+  <title>Student Pannel</title>
+</head>
+
+<body>
+
+  <div class="tmain">
+
+    <nav>
+      <div class="logo" onclick="location.href='/'">
+        <h1 style="font-family: cursive;">Pariksha</h1>
+   </div>
+      <div class="logout">
+        <ul>
+          <li>
+            <button type="submit" style="padding: 6px;" onclick="location.href='/'" class="btn">Logout</button>
+          </li>
+         
+      </div> 
+    </nav>
+
+
+    
+ 
+  </div>
+  
+
+  <script>
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+      document.getElementById("main").style.marginLeft = "250px";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.getElementById("main").style.marginLeft = "0";
+    }
+  </script>
+  {% block sbody %}
+  {% endblock sbody %}
+
+  
+</body>
+
+</html>

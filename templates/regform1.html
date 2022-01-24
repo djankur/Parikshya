@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <div class="logo"><h1 style="font-family: cursive;">Pariksha</h1></div>
+        </div>
+        <ul>
+            <li onclick="location.href='/'"Home>Home</li>
+            <li  onclick="location.href='/about'">About</li>
+            <li  onclick="location.href='/contact'">Contact</li>
+            <li class="dropdown-btn">Login
+                <div class="dropdown">
+                    <a onclick="location.href='/tealogin'">Admin Login</a>
+                    <a onclick="location.href='/stdlogin'">Student Login</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+
+    <div class="container">
+        <div class="photo" style="background-image: url('/static/reg.gif');"></div>
+        <div class="login">
+            <center>
+                <h2>Student Register</h2>
+            </center>
+            <form action="/regform/" method="POST" onsubmit="return validation()" >
+                {% csrf_token %}
+
+                <div class="input-row">
+                    <h4>Name</h4>
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Full name" autocomplete="off">
+					<span id="nameid" class="namespan"> </span>
+                </div>
+                <div class="input-row">
+                    <h4>Address</h4>
+                    <input type="text" name="address" class="form-control" id="address" placeholder="Address" autocomplete="off">
+					<span id="address" class="text-danger font-weight-bold"> </span>
+                </div>
+                <div class="input-row">
+                    <h4>Pin</h4>
+                    <input type="text" name="pin" class="form-control" id="pin" placeholder="Pin" maxlength="6" autocomplete="off" 
+					oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+					<span id="pin" class="text-danger font-weight-bold"> </span>
+                </div>
+                <div class="input-row">
+                    <h4>Email</h4>
+                    <input type="email" name="email" class="form-control" id="email" placeholder="Example@email.com" autocomplete="off" required>
+					<span id="email" class="text-danger font-weight-bold"> </span>
+                </div>
+                <div class="input-row">
+                    <h4>Phone</h4>
+                    <input type="text" name="phone" class="form-control" id="phone" maxlength="12" autocomplete="off" placeholder="Phone" required
+					oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+					<span id="phone" class="pho"> </span>
+                </div>
+                <div class="input-row">
+                    <h4>Password</h4>
+                    <input type="password" name="password" class="form-control" placeholder="Password" id="password" >
+					<span id="passwordid" class="passwordspan"> </span>
+                </div>
+                <div class="input-row">
+                    <input class="btn" type="submit" value="Register">
+                </div>
+            </form>
+            <p>Already registered? Login <a href="/stdlogin/"> here </a></p>
+
+        </div>
+    </div>
+    <script type="text/javascript">
+		
+
+		function validation(){
+	
+			var Name = document.getElementById('name').value;
+			var Password = document.getElementById('password').value;
+			
+			if(Name == ""){
+				document.getElementById('nameid').innerHTML =" ** Please fill the name field";
+				return false;
+			}
+	
+		
+	
+			
+			if(Password == ""){
+				document.getElementById('passwordid').innerHTML =" ** Please fill the password field";
+				return false;
+			}
+			if((Password.length <= 7) || (Password.length > 20)) {
+				document.getElementById('passwordid').innerHTML =" ** Passwords length must 8";
+				return false;	
+			}
+		}
+	
+	</script> 
+</body>
+
+</html>

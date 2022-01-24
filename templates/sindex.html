@@ -1,0 +1,55 @@
+{% extends 'sbase.html' %}
+{% block sbody %}
+
+<center class="container">
+    {% comment %} <div>
+        <h1 class="input-row"> 
+            Welcome {{name}}
+        </h1>
+    </div> {% endcomment %}
+
+    <div class="login">
+        <div>
+            <h1 class="input-row"> 
+                Welcome {{name}}
+            </h1>
+        </div>
+        <h3>Rules for the exam</h3>
+       <div class="input-row">
+        <ol>
+            <li>
+                You should finish the exam on time
+            </li>
+             
+
+            <li>
+                You have to click save and close button 
+                after finishing the exam
+            </li> 
+
+            <li>
+                Each question have 1 marks
+            </li>
+
+            <li>
+                There is no negative marks
+            </li>
+            <li>
+                You will get the marks  
+                after finishing the exam
+            </li>
+        </ol>
+       </div>
+       <button type="submit" id="fullscreen" style="margin: 4px; padding: 6px;" onclick="location.href='/qn'" class="btn"> Start Exam > </button>
+    </div>
+    
+</center>
+
+<script>
+    document.getElementById('fullscreen',()=>{
+        document.documentElement.requestFullscreen().catch((e)=>{
+            console.log(e)
+        })
+    })
+</script>
+{% endblock sbody %}

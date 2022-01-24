@@ -1,0 +1,26 @@
+{% extends 'tbase.html' %}
+{% block body %}
+<div class="container">
+  
+    <table style="width:100%">
+        <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Subject</th>
+        <th>Marks</th>
+        </tr>
+
+        {% for i in result %}
+        <tr >
+            <th>{{i.sname}}</th>
+            <th >{{i.s_email}}</th>
+            
+            <th></th>
+            <th>{{i.marks}}</th>
+        </tr>
+
+        {% endfor %}
+     
+      </table>
+</div>
+{% endblock body %}

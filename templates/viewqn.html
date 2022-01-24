@@ -1,0 +1,30 @@
+{% extends 'tbase.html' %}
+{% block body %}
+ <div class="tcontainer">
+     <div class="addqn">
+        
+     
+    {% for i in qn  %}
+   
+    <form method="post" action="/viewqn/">
+        {% csrf_token %} 
+        <div class="addqninput" style="inline-size: auto;" >
+
+            {{i.qid}}.
+            <input  type="text" name="qid" value="{{i.qid}}" hidden > 
+            <input  type="text" name="qn" value="{{i.question}}" style="font-size:larger"> 
+            <input type="submit" class='btn' style="inline-size: 58px;" value="EDIT">
+            
+            <br><br>
+          
+            
+        </div>
+       
+    </form>
+    <input type="submit" class='btn' onclick="location.href='/delete'" style="inline-size: 58px;" value="DEL">
+
+    {% endfor %}
+</div>
+ </div>
+{% endblock body %}
+    

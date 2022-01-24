@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online exam</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet"> 
+{% block head %}{% endblock head %}
+  
+</head>
+<body>
+   
+   
+    <nav>
+        
+        <div class="logo"><h1 style="font-family: cursive;">Pariksha</h1></div>
+        <ul>
+            <li onclick="location.href='/'">Home</li>
+            <li  onclick="location.href='/about'">About</li>
+            <li  onclick="location.href='/contact'">Contact</li>
+            <li class="dropdown-btn">Login
+                <div class="dropdown">
+                    <a href="/tealogin/">Admin Login</a>
+                    <a href="/stdlogin/">Student Login</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    {% block nav %}
+     
+    <div class="main">
+        <div class="text">
+            <h1>Online Exam Portal</h1>
+            <p>Conducting Exams is stressful.  Let Pariksha solve your stress of conducting exams online effortlessly. Pariksha comes with tools making the process of taking exams easier along with providing easy interface for students  . Choose Pariksha today!</p>
+            <button class="btn" onclick="location.href='regform/'" style="width: 300px;">Register</button>
+        </div>
+        <img src="static/home.gif" alt=""> 
+        <!-- <video src="static/image.mp4"></video> -->
+    </div>
+    
+    <div class="footer">
+       <center> <div class="line"></div> </center>
+       <div class="footer-text">
+           <p>Created by - Ankur</p>
+       </div>
+    </div>
+    {% endblock nav %}  
+</body>
+</html>

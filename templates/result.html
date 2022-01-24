@@ -1,0 +1,38 @@
+{% extends 'sbase.html' %}
+{% block sbody %}
+
+
+<center class="container">
+    
+    <form method="post" action="/result/">
+        {% csrf_token %}
+
+        <div class="login">
+            {% for i in std %}
+            <input type="text" name='sname' value="{{i.name}}" hidden >
+            {% endfor %}
+            {% comment %} <input type="text" name='sname' value="{{sname}}" > {% endcomment %}
+            <input type="text" name='s_email' value="{{s_email}}" hidden>
+            
+            <h2 style="font-family: cursive;">Your Total Score</h2><br>
+    
+            <h1>{{score}}</h1><br>
+            <input type="text" name='marks' value="{{score}}" hidden>
+            <input type="submit" class="btn" value="Save & Close" required>
+        </div>
+
+        <br><h4> ****Hit the 'Save & Close' button to save and exit from the exam*****</h4>
+
+    </form>
+    <!-- <div>
+        <h1 class="input-row"> 
+         {{name}}
+        </h1>
+    </div> -->
+
+    
+    
+</center>
+
+{% endblock sbody %}
+

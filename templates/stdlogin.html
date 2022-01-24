@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student login</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> -->
+
+    <!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <nav>
+        <div class="logo" onclick="location.href='/'" ><h1 style="font-family: cursive;">Pariksha</h1></div>
+        <ul>
+            <li onclick="location.href='/'">Home</li>
+            <li  onclick="location.href='/about'">About</li>
+            <li  onclick="location.href='/contact'">Contact</li>
+            <!-- <li class="dropdown-btn">Login
+                <div class="dropdown">
+                    <a href="tealogin/">Admin Login</a>
+                    <a href="stdlogin/">Student Login</a>
+                </div>
+            </li> -->
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="photo" style="background-image: url('/static/slogin.gif');"></div>
+        <div class="login">
+            <center>
+                <h2>Student Login</h2>
+            </center>
+            <form method="POST" action="{% url 'stdlogin' %}" onsubmit="return validation()">
+                {% csrf_token %}
+
+               <div class="alert">
+                {% if messages %}
+                <ul class="alert alert-danger">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                        {% endfor %}
+                </ul>
+                {% endif %}
+               </div>
+
+                 <!-- <div class="input-row">
+                    <h4>Roll Number</h4>
+                    <input type="text" name="roll" class="form-control" id="roll"  placeholder="Roll Number">
+                    <span id="roll" value="roll" class="rollspan" > </span>
+                </div> -->
+
+                <div class="input-row">
+                    <h4>Email</h4>
+                    <input type="email" name="email" class="form-control" id="email"  placeholder="name@example.com">
+                    <span id="emailid" value="email" class="emailspan" > </span>
+                </div>
+               
+
+                <div class="input-row">
+                    <h4>Password</h4>
+                    <input type="password" name="password" class="form-control" id="password"  placeholder="Password">
+                    <span id="passwordid" value="password" class="passwordspan"> </span>
+                </div>
+
+                <!-- <div class="checkbox mb-3">
+                    <label>
+                      <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                  </div> -->
+
+                <div class="input-row">
+                    <input class="btn" type="submit" value="Login">
+                </div>
+            </form>
+            <p>Not registered yet? Register <a href="/regform/"> here </a></p>
+
+        </div>
+    </div>
+    
+<script type="text/javascript">
+		
+
+    function validation(){
+
+        // var roll = document.getElementById('roll').value;
+        
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+  
+  
+  if(roll == ""){
+    		document.getElementById('rollno').innerHTML =" ** Please fill the roll field";
+    		return false;
+    	}
+    	// if((roll.length <= 8) || (roll.length > 20)) {
+    	// 	document.getElementById('rollno').innerHTML =" ** Roll Number have 8 Number minimum";
+    	// 	return false;	
+    	// }
+     if(isNaN(roll)){
+    		document.getElementById('rollno').innerHTML =" ** Roll Number can't be character !";
+    		return false;
+    	} 
+
+        if(email == ""){
+            document.getElementById('emailid').innerHTML =" ** Please fill the email id field";
+            return false;
+        }
+        if(email.indexOf('@') <= 0 ){
+            document.getElementById('emailid').innerHTML =" ** @ Invalid Position";
+            return false;
+        }
+
+        if((email.charAt(email.length-4)!='.') && (email.charAt(email.length-3)!='.')){
+            document.getElementById('emailid').innerHTML =" ** . Invalid EmailID";
+            return false;
+        }
+
+        
+        if(password == ""){
+            document.getElementById('passwordid').innerHTML =" ** Please fill the password field";
+            return false;
+        }
+        if((password.length <= 5) || (password.length > 20)) {
+            document.getElementById('passwordid').innerHTML =" ** Passwords lenght must 8";
+            return false;	
+        }
+    }
+
+</script> 
+</body>
+
+
+
+</html>

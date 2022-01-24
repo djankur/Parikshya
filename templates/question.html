@@ -1,0 +1,63 @@
+{% extends 'tbase.html' %}
+{% block body %}
+
+
+<div class="tcontainer">
+      
+        <div class="addqn">
+            <center>
+              <h2>ADD QUESTION</h2> 
+            
+            <form method="POST" action="/addqn/" >
+            
+                {% csrf_token %}
+
+                <!-- {{eqty}} -->
+                <div class="addqninput">
+                    
+                    <input type="text" name="qid"  id="qnid" required placeholder="QUESTION NUMBER" autocomplete="off">
+					<span id="qn" class="namespan"> </span>
+                </div>
+                <div class="addqninput">
+                    
+                    <input type="text" name="question" class="form-control" required id="name" placeholder="QUESTION" autocomplete="off">
+					<span id="qn" class="namespan"> </span>
+                </div>
+                <div class="addqninput">
+                
+                    <input type="text" name="option1" class="form-control" id="option1" required placeholder="OPTION 1" autocomplete="off">
+					<span id="qn" class="text-danger font-weight-bold"> </span>
+                </div>
+                <div class="addqninput">
+                
+                    <input type="text" name="option2" class="form-control" id="option2" required placeholder="OPTION2 " autocomplete="off">
+					<span id="qn" class="text-dangr font-weight-bold"> </span>
+                </div>
+                <div class="addqninput">
+                
+                    <input type="text" name="option3" class="form-control" id="option3" required placeholder="OPTION 3" autocomplete="off">
+					<span id="qn" class="text-danger font-weight-bold"> </span>
+                </div>
+                <div class="addqninput">
+                
+                    <input type="text" name="option4" class="form-control" id="option4" required placeholder="OPTION 4" autocomplete="off">
+					<span id="qn" class="text-danger font-weight-bold"> </span>
+                </div>
+                <div class="addqninput">
+                
+                    <input type="text" name="correctans" class="form-control" id="correctans" required placeholder="Correct Answer" autocomplete="off">
+					<span id="qn" class="text-danger font-weight-bold"> </span>
+                </div>
+           
+                <div class="addqninput">
+                    <input class="btn" type="submit" value="Add">
+                </div>
+            </form>
+
+         </center>
+           
+
+        </div>
+    </div>
+    
+    {% endblock body %}

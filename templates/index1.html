@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TIMER</title>
+</head>
+<script>
+   var btn =  document.getElementById("save_ans")
+
+if(localStorage.getItem("count_timer")){
+    var count_timer = localStorage.getItem("count_timer");
+} else {
+    var count_timer = 60*0.2;
+}
+var minutes = parseInt(count_timer/60);
+var seconds = parseInt(count_timer%60);
+function countDownTimer(){
+    if(seconds < 10){
+        seconds= "0"+ seconds ;
+    }if(minutes < 10){
+        minutes= "0"+ minutes ;
+    }
+    
+    document.getElementById("total-time-left").innerHTML = "Time Left : "+minutes+" Minutes "+seconds+" Seconds";
+    if(count_timer <= 0){
+        
+         localStorage.clear("count_timer");
+    } else {
+        count_timer = count_timer -1 ;
+        minutes = parseInt(count_timer/60);
+        seconds = parseInt(count_timer%60);
+        localStorage.setItem("count_timer",count_timer);
+        setTimeout("countDownTimer()",1000);
+    }
+
+    if(count_timer ==0)
+                {
+                
+                    document.getElementById("myRadio1").disabled = true;
+                    document.getElementById("myRadio2").disabled = true;
+                    document.getElementById("myRadio3").disabled = true;
+                    document.getElementById("myRadio4").disabled = true;
+                
+                }
+}
+setTimeout("countDownTimer()",1000);
+
+</script>
+<body>
+   <div id="total-time-left" align="center"> </div>
+   
+   <div class="container">
+
+    <div class="card">
+
+        {% for i in questions %}
+        <div class="question">
+            <h1>
+                {{i.qid}}) {{i.question}} ?
+            </h1>
+        </div>
+        <form action="/qn?name=">
+            <div class="answer">
+                <div class="row">
+                    <div class="option">
+                        <input type="radio" id="myRadio1" class="rb" name="name" id="Option1" value="{{i.option1}}"> A)
+                        {{i.option1}}</p>
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="myRadio2" class="rb" name="name" id="Option2" value="{{i.option2}}"> B)
+                        {{i.option2}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="option">
+                        <input type="radio" id="myRadio3" class="rb" name="name" id="Option3" value="{{i.option3}}"> C)
+                        {{i.option3}}
+                    </div>
+                    <div class="option">
+                        <input type="radio" id="myRadio4" class="rb" name="name" id="Option4" value="{{i.option4}}"> D)
+                        {{i.option4}}
+                    </div>
+                </div>
+            </div>
+            
+            <input id='timer' type='hidden' name="timer" value="">
+             <br>
+    </form>
+
+{% endfor %}
+ <div class="row">
+<button id="save_ans" >
+    SUBMIT ANS
+</button>
+</div> 
+
+<div class="row">
+ 
+            {% if questions.has_previous%}
+            <a href="?page={{questions.previous_page_number}}">
+                <button id="submitans">
+                    Previous
+                </button> </a>
+            {%endif%}
+
+
+            {% if questions.has_next %}
+            <a href="?page={{questions.next_page_number}}">
+                <button id="submitans">
+                    {% comment %} <button id="save_ans" >   {% endcomment %}
+                    Next
+                </button> </a>
+            {%else%}
+            <a href="/result/">
+                <button id="submitans">
+                    Submit Answer
+                </button> </a>
+            {%endif%}
+        </div>
+        
+
+    </div>
+    
+</div>
+</body>
+</html>
