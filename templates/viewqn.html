@@ -12,8 +12,9 @@
 
             {{i.qid}}.
             <input  type="text" name="qid" value="{{i.qid}}" hidden > 
-            <input  type="text" name="qn" value="{{i.question}}" style="font-size:larger"> 
-            <input type="submit" class='btn' style="inline-size: 58px;" value="EDIT">
+            {{i.question}}
+            <!-- <input  type="text" name="qn" value="{{i.question}}" style="font-size:larger">  -->
+            <!-- <input type="submit" class='btn' style="inline-size: 58px;" value="EDIT"> -->
             
             <br><br>
           
@@ -21,6 +22,7 @@
         </div>
        
     </form>
+    <input type="submit" class='btn' onclick="location.href='/edit'" style="inline-size: 58px;" value="EDIT">
     <input type="submit" class='btn' onclick="location.href='/delete'" style="inline-size: 58px;" value="DEL">
 
     {% endfor %}

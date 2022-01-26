@@ -12,7 +12,8 @@
 
             {{i.qid}}.
             <input  type="text" name="qid" value="{{i.qid}}" hidden > 
-            <input  type="text" name="qn" value="{{i.question}}" style="font-size:larger"> 
+            {% comment %} <input  type="text" name="qn" value="{{i.question}}" style="font-size:larger">  {% endcomment %}
+            <p>{{i.question}} ? </p>
             <input type="submit" class='btn' onclick="myfun()" style="inline-size: 58px;" value="DEL">
             
             <br><br>

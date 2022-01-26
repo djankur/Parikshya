@@ -165,16 +165,16 @@ def addqn(request):
 
 
 def viewqn(request):
-    if request.method == "POST":
-        qid=request.POST.get('qid')
-        qd=request.POST['qn']
-        Question.objects.filter(qid=qid).update(question=qd)
+    # if request.method == "POST":
+    #     qid=request.POST.get('qid')
+    #     qd=request.POST['qn']
+    #     Question.objects.filter(qid=qid).update(question=qd)
     
-        return HttpResponse("updated")
-    else:   
+    #     return HttpResponse("updated")
+    # else:   
         qn = Question.objects.all()
         return render(request,'viewqn.html',{"qn":qn})
-    return render(request,'viewqn.html')
+    # return render(request,'viewqn.html')
 
 
 def delete(request):
@@ -187,6 +187,24 @@ def delete(request):
     else:   
         qn = Question.objects.all()
         return render(request,'delete.html',{"qn":qn})
+
+def edit(request):
+    if request.method == "POST":
+        qid=request.POST.get('qid')
+        qd=request.POST.get('qn')
+        option1=request.POST.get('option1')
+        option2=request.POST.get('option2')
+        option3=request.POST.get('option3')
+        option4=request.POST.get('option4')
+        Question.objects.filter(qid=qid).update(question=qd,option1=option1,option2=option2,option3=option3,option4=option4)
+    
+        # return HttpResponse("updated")
+        messages.success(request, 'Successfully updated')
+        return redirect("/edit")
+    else:   
+        qn = Question.objects.all()
+        return render(request,'edit.html',{"qn":qn})
+    return render(request,'viewqn.html')
 
 def result(request):
     # print('Session email : ',request.session.get('email'))

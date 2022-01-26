@@ -17,6 +17,7 @@ urlpatterns = [
     path('viewqn/',views.viewqn,name='viewqn'),
     path('tresult/',views.tresult,name='tresult'),
     path('delete/',views.delete,name='delete'),
+    path('edit/',views.edit,name='edit'),
     path('about/',views.about,name='about'),
     path('contact/',views.contact,name='contact'),
    
