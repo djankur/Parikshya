@@ -196,7 +196,7 @@ def edit(request):
         option2=request.POST.get('option2')
         option3=request.POST.get('option3')
         option4=request.POST.get('option4')
-        Question.objects.filter(qid=qid).update(question=qd,option1=option1,option2=option2,option3=option3,option4=option4)
+        Question.objects.filter(qid=qid).update(qid=qid,question=qd,option1=option1,option2=option2,option3=option3,option4=option4)
     
         # return HttpResponse("updated")
         messages.success(request, 'Successfully updated')
