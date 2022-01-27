@@ -3,7 +3,7 @@ from django.urls import path
 from Examapp import views
 
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('/', views.home, name='home'),
     path('regform/',views.regform,name='regform'),
     path('stdlogin/',views.stdlogin,name='stdlogin'),
     path('qn/',views.qn,name='qn'),
